@@ -1,0 +1,24 @@
+Schedule Trigger
+        ↓
+SSH (df -h /var)
+        ↓
+Code (extrair percentual)
+        ↓
+IF (uso >= 80%)
+     ↙          ↘
+   Não          Sim
+    ↓            ↓
+ Fim       SSH (find/remoção logs)
+                ↓
+           SSH (novo df -h /var)
+                ↓
+           Code (calcular espaço liberado)
+                ↓
+          Google Sheets
+                ↓
+             IF (>80%)
+             ↙      ↘
+           Sim      Não
+            ↓         ↓
+      Alerta Crítico  Notificação Sucesso
+      (Teams)         (Teams)
