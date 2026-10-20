@@ -1,0 +1,35 @@
+Atue como um especialista em N8N.
+
+Crie uma automação para monitorar a ocupação do diretório /var em servidores Linux e executar limpeza automática de arquivos de log quando a utilização atingir 80% ou mais.
+
+Público:
+Equipe de Infraestrutura Linux, Administradores de Sistemas e DevOps.
+
+Ferramentas envolvidas:
+N8N, servidor Linux, SSH, comandos df, find e rm, Microsoft Teams (ou Telegram) para notificações e Google Sheets para registro das execuções.
+
+Fluxo:
+1. Executar a automação automaticamente a cada hora utilizando um gatilho Schedule.
+2. Conectar ao servidor Linux via SSH.
+3. Executar o comando de verificação de espaço em disco no diretório /var.
+4. Extrair o percentual de utilização retornado pelo comando.
+5. Verificar se a ocupação é igual ou superior a 80%.
+6. Se for inferior a 80%, finalizar o workflow.
+7. Se for igual ou superior a 80%, identificar arquivos de log antigos localizados em /var/log.
+8. Remover apenas logs com mais de 30 dias, conforme política definida.
+9. Executar nova verificação de utilização do disco.
+10. Calcular o espaço liberado após a limpeza.
+11. Registrar a execução em uma planilha Google Sheets contendo data, servidor, ocupação antes da limpeza, ocupação após a limpeza e espaço liberado.
+12. Enviar uma notificação para a equipe de infraestrutura contendo os detalhes da ação executada.
+13. Caso a ocupação permaneça acima de 80% após a limpeza, enviar um alerta crítico para a equipe responsável.
+
+Regras:
+- Executar a limpeza apenas quando a ocupação atingir ou ultrapassar 80%.
+- Nunca remover arquivos com menos de 30 dias de criação ou modificação.
+- Não excluir arquivos de sistema críticos.
+- Registrar todas as ações para fins de auditoria.
+- Em caso de falha na conexão SSH, registrar o erro e enviar uma notificação para a equipe.
+- Executar a automação apenas em servidores previamente autorizados.
+- Informar no alerta o nome do servidor, a ocupação encontrada, a quantidade de espaço liberado e a ocupação final após a limpeza.
+
+Explique quais nodes do N8N devem ser utilizados, como cada node deve ser configurado e a lógica completa de funcionamento do workflow, incluindo os fluxos de sucesso, erro e alerta crítico.
